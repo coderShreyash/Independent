@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Product Sans';
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: url("https://img.freepik.com/free-vector/luxury-ornamental-mandala-design-background_1159-6794.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+h1{
+    font-size: xx-large;
+}
+
+
+p {
+    font-size: 4rem;
+    text-shadow: 0 0 10px;
+}
+body {
+    animation: fadeInAnimation ease 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independence Day Quiz</title>
+    <link rel="icon" type="image/x-icon" href="https://www.clipartmax.com/png/middle/316-3161061_india-flag-icon-clipart-flag-of-india-india-flag-icon-png.png">
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+
+ 
+    <script >
+        var firebaseConfig = {
+          apiKey: "AIzaSyApOALZ80hzi_6o7-UTuZopAdWMgKVbEcI",
+          authDomain: "medi4-45dc5.firebaseapp.com",
+          databaseURL: "https://medi4-45dc5-default-rtdb.firebaseio.com",
+          projectId: "medi4-45dc5",
+          storageBucket: "medi4-45dc5.appspot.com",
+          messagingSenderId: "534557575689",
+          appId: "1:534557575689:web:d183e021a6ae299d4206d8"
+        };
+        firebase.initializeApp(firebaseConfig);
+      </script>
+    <style>
+        body{
+            height: 100vh;
+            background: url("https://img.freepik.com/free-vector/luxury-ornamental-mandala-design-background_1159-6794.jpg");
+    background-size: cover;
+    margin: 0;
+        }
+        #container {
+            
+            display: none;
+            text-align: center;
+            flex-direction: column;
+            display: flex;
+            padding-left: 15px;
+            padding-right: 15px;
+            background: rgba(0, 0, 0, 1);
+            padding-top: 15px;
+            margin-top: -20px;
+            color: white;
+            z-index: -1;
+
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            text-shadow: 3px 3px 5px black;
+            text-align: center;
+        }
+
+        .search {
+            width: 12.5vw;
+            height: 10vw;
+            border: 2px solid black;
+
+        }
+        #ns{
+            height:10vw;
+            width:87.5vw;
+            font-size: larger;
+        }
+        .nameS {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 30px;
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        #container:nth-child(4){
+            
+            background-color: gold;
+        }
+        #container:nth-child(5){
+            background-color: silver;
+        }
+        #container:nth-child(6){
+            background-color: brown;
+        }
+        table {
+  border: 2px solid black;
+}
+
+    </style>
+</head>
+
+<body>
+    <br>
+    <div id="load"
+        style="position:absolute;width:100%;height:100%;background: url('https://i.pinimg.com/originals/3d/a1/c2/3da1c204207bec1124d5a7c8f945346f.gif');background-size: cover;background-position: center;">
+
+    </div>
+    <table id="container" >
+        <caption style="background:yellow;font-size: xx-large;text-shadow:1px 1px 2px black,-1px -1px 2px black;">
+            🏆 Leaderboard 🏆
+
+        </caption>
+
+        <th>
+            <tr class="row" style="background: indigo;">
+
+
+                <td class="name" style="font-size: x-large;">Name</td>
+
+                <td class="score" style="font-size: x-large;">Points</td>
+
+            </tr>
+
+        </th>
+
+    </table>
+
+    <script>
+
+        database = firebase.database();
+        players = 0;
+        var ref = firebase.database().ref("Players");
+        ref.once("value")
+            .then(function (snapshot) {
+                players = snapshot.numChildren()
+                database.ref("Players/").on('value', function (snap) {
+                    a = snap.val();
+                    for (i = 0; i <= players - 1; i++) {
+                        name = a[Object.keys(a)[i]].Name;
+                        score = a[Object.keys(a)[i]].Score;
+
+                        if (!document.getElementById("container").innerHTML.includes(name)) {
+                            document.getElementById("container").innerHTML += ' <tr class="row"><td class="name">' + name + '</td><td class="score">' + score + '</td></tr>'
+                        console.log(name);
+                        }
+                    }
+
+                });
+            })
+
+
+        setTimeout(function () {
+            sortingHat()
+            document.getElementById("load").style.display = 'none';
+            document.getElementById("container").style.display = 'flex';
+
+            document.querySelector('#container :nth-child(3)').style.background="gold";
+            document.querySelector('#container :nth-child(3)').style.fontSize="25px";
+
+            document.querySelector('#container :nth-child(4)').style.background="silver";
+            document.querySelector('#container :nth-child(4)').style.fontSize="23px";
+
+            document.querySelector('#container :nth-child(5)').style.background="brown";
+            document.querySelector('#container :nth-child(5)').style.fontSize="21px";
+
+            let numb = document.getElementById("container").children.length;
+
+            for(i=3;i<=numb;i++){
+            document.querySelector(`#container :nth-child(${i})`).innerHTML =  (i-2)+". " +document.querySelector(`#container :nth-child(${i})`).innerHTML
+
+            }
+        
+        }, 5000)
+     
+        function sortingHat() {
+
+            let elements = []
+            let container = document.getElementById("container")
+            // Add each row to the array
+            container.querySelectorAll('.row').forEach(el => elements.push(el))
+            // Clear the container
+            container.innerHTML = ''
+            // Sort the array from highest to lowest
+            elements.sort((a, b) => b.querySelector('.score').textContent - a.querySelector('.score').textContent)
+            // Put the elements back into the container
+            container.innerHTML += " <caption style='background:yellow;font-size: xx-large;text-shadow:1px 1px 2px black,-1px -1px 2px black;'>🏆 Leaderboard 🏆</caption>"
+            elements.forEach(e => container.appendChild(e))
+
+        }
+        function sortingHat2(e) {
+	let searched = document.getElementById("ns").value;
+  if (searched.trim() !== "") {
+  	let text = document.getElementById("container").innerHTML.replaceAll("<mark>","");
+        text=text.replaceAll("</mark>","");
+  	let re = new RegExp(searched.trim(),"g"); // search for all instances
+
+		let newText = text.replace(re, `<mark>${searched.trim()}</mark>`);
+		document.getElementById("container").innerHTML = newText;
+        document.getElementById("ns").value=searched
+  }
+}
+    </script>
+</body>
+
+</html>

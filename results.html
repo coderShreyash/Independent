@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Independence Day Quiz</title>
+    <link rel="icon" type="image/x-icon" href="https://www.clipartmax.com/png/middle/316-3161061_india-flag-icon-clipart-flag-of-india-india-flag-icon-png.png">
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+    
+    <script >
+       
+        var firebaseConfig = {
+          apiKey: "AIzaSyApOALZ80hzi_6o7-UTuZopAdWMgKVbEcI",
+          authDomain: "medi4-45dc5.firebaseapp.com",
+          databaseURL: "https://medi4-45dc5-default-rtdb.firebaseio.com",
+          projectId: "medi4-45dc5",
+          storageBucket: "medi4-45dc5.appspot.com",
+          messagingSenderId: "534557575689",
+          appId: "1:534557575689:web:d183e021a6ae299d4206d8"
+        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      </script>
+
+    <style>
+        @keyframes glow {
+            0%   {box-shadow: 1px 1px 20px orange;}
+            15%   {box-shadow: 1px 1px 30px orange;}
+
+            33%   {box-shadow: 1px 1px 20px orange;}
+
+  34% {box-shadow: 1px 1px 20px blue;}
+  50% {box-shadow: 1px 1px 30px blue;}
+
+  67%  {box-shadow: 1px 1px 20px blue;}
+
+  68% {box-shadow: 1px 1px 20px green;}
+  85% {box-shadow: 1px 1px 30px green;}
+
+  100% {box-shadow: 1px 1px 20px green;}
+
+}
+.gloww{
+text-shadow:1px 1px 2px black,-1px -1px 2px black;
+animation-name:glow;
+animation-duration: 6s;
+animation-iteration-count: infinite;
+}
+    </style>
+</head>
+<body>
+
+    
+<div style="display:block">
+    <center>
+<h1 style="text-shadow: 2px 2px 5px black, -5px -5px 15px orange,5px 5px 15px orange;" >Your Score: </h1>
+<h1 id="score" style="font-size: 50px;"></h1>
+<hr>
+<h2 id="Quest"></h2>
+<h2 id="Time"></h2><hr><br>
+<h3 style="margin-top: 5px;text-shadow: 2px 2px 5px black, -5px -5px 15px green,5px 5px 15px green;" id="Text"></h3>
+<br>
+<div class="gloww" style="text-align: center;background: rgba(0, 0, 0, 0.9);padding: 10px;width:95%;margin-top: 10px;" onclick="shares()">
+
+<h2  style="font-size: 22px;margin-top:15px ;" >Share this Quiz to 5 Indians and GET YOUR CERTIFICATE !</h2>
+
+<img style="margin-top: 10px;" width="50" src="https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-whatsapp-circle-512.png" alt="">
+</a></div>
+<button onclick = "certif()" style="font-size: 30px;background-color: blueviolet;color: white;font-weight: 700;padding-right: 5px;padding-left: 5px;" id = "certi" >Certificate</button>
+
+</div>
+<script src="hyperes.js"></script>
+    <script src="confetti.js"></script>
+    <!-- Confetti  JS-->
+    <script>
+
+        // start
+
+        const start = () => {
+            setTimeout(function() {
+                confetti.start()
+            }, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+        };
+
+        //  Stop
+
+        const stop = () => {
+            setTimeout(function() {
+                confetti.stop()
+            }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+        };
+
+        start();
+        stop();
+    </script>
+    <script>
+        database = firebase.database();
+        function shares(){
+            window.setTimeout(function certificate(){
+                localStorage.setItem("certi",'true')
+                eligible();
+            },2000)
+
+        database.ref("/Links/link").on('value',function(data){
+            links = "whatsapp://send?text= I scored "+localStorage.getItem("Scorer")+" Points in this amazing 'AZADI KA AMRIT MAHOTSAV' Quiz. Can You Beat My Score ?: "+data.val();
+            window.open(links)
+        })
+    }
+    window.setInterval(eligible() , 1000)
+    function certif(){
+        window.open("certificate.html");
+    }
+    function eligible()
+    {
+            if(localStorage.getItem("certi")!='true')
+            {
+                document.getElementById("certi").style.visibility="hidden";
+            }
+            else
+            {
+                document.getElementById("certi").style.visibility="visible";
+
+            }
+    }
+    window.reload();
+    </script>
+</body>
+</html>

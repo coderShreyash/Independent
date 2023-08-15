@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate</title>
+    <style>
+        img{
+            width: 50%;
+        }
+        button{
+            font-size:25px;
+        }
+        a{
+            font-size:27px;
+        }
+        @media screen and (max-width:700px) {
+            img{
+                width: 100%;
+            }
+            button{
+            font-size:16px;
+        }
+        a{
+            font-size:18px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <center>
+<button id="down" style="cursor:pointer;font-weight: 700;color: white;background: #00bb54;text-shadow: 1px 1px 2px black;border: 2px solid black;">Download</button>
+<button onclick=sharem() id="waButton" style="cursor:pointer;font-weight: 700;color: white;background: #00bb54;text-shadow: 1px 1px 2px black;border: 2px solid black;padding: 1px;text-decoration: none;padding-top:0px;">Share On Whatsapp
+
+</button>
+
+<hr color="black">
+  <canvas id="my" width="850" height="1100" style="display:none;border:2px solid black;float:left;"></canvas>
+  <img src="" id="img" >
+  </center>
+  <br>
+<script>
+  var bdis = document.getElementById("dis")
+  var bdown = document.getElementById("down")
+  var can = document.getElementById("my")
+  var imga = document.getElementById("img")
+  var c = document.getElementById("my");
+var nam = localStorage.getItem("name")
+
+var ctx = c.getContext("2d");
+var background = new Image();
+background.src = "cert.png"
+ctx.scale(0.55, 0.55);
+
+// Make sure the image is loaded first otherwise nothing will draw.
+background.onload = function(){
+    ctx.drawImage(background,0,0);   
+  ctx.font = "700 125px Georgia";
+  ctx.textAlign = "center"
+  ctx.tex = "center"
+
+ctx.fillText(nam, 770,1000);
+imga.src=my.toDataURL();
+
+}
+  bdown.addEventListener("click", function(){
+  var a = document.createElement("a");
+  document.body.appendChild(a)
+  a.href = my.toDataURL();
+  a.download = "certificate.png";
+  a.click();      
+  document.body.removeChild(a);
+  })
+  function sharem(){
+      window.open("whatsapp://send?text=Check out this amazing website and get your Special Certificate, Now ! "+window.location.href.replace("certificate","index"));
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independence Day Quiz</title>
+    <link rel="icon" type="image/x-icon" href="https://www.clipartmax.com/png/middle/316-3161061_india-flag-icon-clipart-flag-of-india-india-flag-icon-png.png">
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+  
+  
+ <script >
+        var firebaseConfig = {
+          apiKey: "AIzaSyApOALZ80hzi_6o7-UTuZopAdWMgKVbEcI",
+          authDomain: "medi4-45dc5.firebaseapp.com",
+          databaseURL: "https://medi4-45dc5-default-rtdb.firebaseio.com",
+          projectId: "medi4-45dc5",
+          storageBucket: "medi4-45dc5.appspot.com",
+          messagingSenderId: "534557575689",
+          appId: "1:534557575689:web:d183e021a6ae299d4206d8"
+        };
+        firebase.initializeApp(firebaseConfig);
+      </script>
+    <style>
+    body{
+        overflow: hidden;
+        margin:0;
+    }
+        div div div{
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 38%;
+            height: 48%;
+            box-shadow: 5px 5px 5px orange,10px 10px 5px white,10px 10px 5px green;
+        }
+        div div img{
+            width: 100%;
+            height: 85%;
+            border-radius: 0% 0% 10px 10px;
+        }
+         div div :hover{
+            box-shadow: 2px 2px 10px blue;
+        }
+        .time{
+            width: 75%;
+            height: 5px;
+            background:linear-gradient(orange,orange,white,green,green);
+            border: 2px solid black;
+        }
+        .start{
+            background:url("https://i.pinimg.com/736x/0d/21/85/0d2185e00038726a849f81244f4ff9ae.jpg");
+            background-size: cover;
+            width: 100%;
+            height: 115%;
+        }
+        .circle{
+        position: absolute;
+        left: 50%;
+        top: 15%;
+        transform: translate(-50%,50%);    
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        color: white;
+        background-color: rgb(0,0,135);
+        box-shadow: 2px 2px 30px gray;
+        font-size: xxx-large;
+        font-weight: 1000 ;
+        line-height: 200px;
+        }
+        #main{
+            display: none;
+        }
+      
+    </style>
+    
+</head>
+<body id="is" onload="checkplayed()" ><center>
+    <div class="start" id ="start">
+        <br><br>
+<h1 id = "names">are you Ready ?</h1>
+
+<div class="circle" id="circle">START</div>
+    </div>
+   <section id="main">
+    <h1 style="margin-top:0px;font-size: xx-large;">Azadi Ka Amrit Mahotsav Quiz</h1><br>
+<div style="margin-top:-35px;display: flex;align-items: center;justify-content: space-around;background:rgb(255, 251, 0);box-shadow:2px 2px 10px rgb(255, 251, 0); height: 25px;" >
+    <h3>Time left: </h3> <div class="time" id="time"></div>
+</div>
+<br>
+    <div id="q1" class="q1" style="display:block;">
+        
+        Q1. Where does Our Prime Minister hoists our national flag on independence day ?
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(1,'a','b')" >a. <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRasfd6M0jsFQv_hhD0rp-WMmd-3nRGXvyv5ZldWYrs3A3Z-fqa2mrvhlW7urmutVDeE24&usqp=CAU" ></div>
+        <div onclick="submitq(1,'b','b')">b.<img src="https://images.indianexpress.com/2018/06/red-fort-759-getty-images.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(1,'c','b')" >c. <img src="https://cdn.britannica.com/86/170586-050-AB7FEFAE/Taj-Mahal-Agra-India.jpg" ></div>
+        <div onclick="submitq(1,'d','b')">d. <img src="https://www.holidify.com/images/cmsuploads/compressed/h4_20170822181427.PNG" ></div>
+        </div>
+
+    </div>
+    <div id="q2" class="q2">
+        Q2. Which Indian leader gave the famous "Tryst with Destiny" speech on the eve of India's independence?
+
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(2,'a','b')">a. <img src="https://images.news18.com/ibnlive/uploads/2021/10/mahatma-gandhi.jpg" ></div>
+        <div onclick="submitq(2,'b','b')">b. <img src="https://cdn.dollsofindia.com/images/p/people-posters/jawaharlal-nehru-GA52_l.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(2,'c','b')">c. <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/A_O_Hume.jpg" ></div>
+        <div onclick="submitq(2,'d','b')">d. <img src="https://yt3.ggpht.com/ytc/AMLnZu--efjF6pSYqBFG50qGPkRv0yTWWPCYWiTtbBF5PA=s900-c-k-c0x00ffffff-no-rj" ></div>
+        </div>
+        
+    </div>
+
+    <div id="q3" class="q3">
+        
+        Q3. 'Tum mujhe khoon do, mein tumhe azadi doonga' was said by ?
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(3,'a','d')">a. <img src="https://i.pinimg.com/originals/b9/ef/1b/b9ef1b5502fa92533037a3b67b4fc4e1.jpg" ></div>
+        <div onclick="submitq(3,'b','d')">b. <img src="https://nonprod-media.webdunia.com/public_html/_media/hi/img/article/2021-01/27/full/1611752739-1149.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(3,'c','d')">c. <img src="https://wallpaperaccess.com/full/3595438.jpg" ></div>
+        <div onclick="submitq(3,'d','d')">d. <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Subhas_Chandra_Bose_NRB.jpg/800px-Subhas_Chandra_Bose_NRB.jpg" ></div>
+        </div>
+        
+    </div>
+
+    <div id="q4" class="q4">
+        
+        Q4. Who gave the clarion call "Do or Die" during the Quit India Movement?
+
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(4,'a','a')">a. <img src="https://images.news18.com/ibnlive/uploads/2021/10/mahatma-gandhi.jpg" ></div>
+        <div onclick="submitq(4,'b','a')">b. <img src="https://cdn.dollsofindia.com/images/p/people-posters/jawaharlal-nehru-GA52_l.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(4,'c','a')">c. <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/A_O_Hume.jpg" ></div>
+        <div onclick="submitq(4,'d','a')">d. <img src="https://yt3.ggpht.com/ytc/AMLnZu--efjF6pSYqBFG50qGPkRv0yTWWPCYWiTtbBF5PA=s900-c-k-c0x00ffffff-no-rj" ></div>
+        </div>
+        
+    </div>
+
+    <div id="q5" class="q5">
+        
+        Q5. Which British officer gave the orders for the Jallianwala Bagh massacre?
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(5,'a','b')">a. <img src="https://cdn.britannica.com/64/6064-004-FE2393DC/Clement-Attlee-photograph-Yousuf-Karsh.jpg" ></div>
+        <div onclick="submitq(5,'b','b')">b. <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/General-Reginald-Dyer.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(5,'c','b')">c. <img src="https://cdn.britannica.com/91/24991-050-BE6C5C23/Mohammad-Ali-Jinnah.jpg" ></div>
+        <div onclick="submitq(5,'d','b')">d. <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Lord_Mountbatten_Naval_in_colour_Allan_Warren.jpg" ></div>
+        </div>
+        
+    </div>
+
+    <div id="q6" class="q6">
+        
+        Q6. Which of the following Indian freedom fighters killed a british officer in Britain ?
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(6,'a','c')">a. <img src="https://connectgujarat.com/wp-content/uploads/2021/04/5-12.jpg" ></div>
+        <div onclick="submitq(6,'b','c')">b. <img src="https://i.pinimg.com/originals/a9/83/38/a98338cc4b7cca6027b1fffccb5dd4d2.png" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(6,'c','c')">c. <img src="https://newsonair.com/wp-content/uploads/2021/07/E7mHtKWVEAM8EiI.jpg" ></div>
+        <div onclick="submitq(6,'d','c')">d. <img src="https://cdn.britannica.com/37/171337-004-0B980E9D/Subhas-Chandra-Bose-Indian-National-Army.jpg" ></div>
+        </div>
+        
+    </div>
+
+    <div id="q7" class="q7">
+        
+        Q7. After independence, who was the first Governor-General of India ? 
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(7,'a','a')">a. <img src="https://cdn.britannica.com/19/133919-050-3CCFBE4B/Louis-Mountbatten.jpg" ></div>
+        <div onclick="submitq(7,'b','a')">b. <img src="https://i.pinimg.com/550x/59/fa/f2/59faf2c8b91414edbfe688ee04a4a535.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(7,'c','a')">c. <img src="https://spontaneousorder.in/wp-content/uploads/2018/08/ar.jpeg" ></div>
+        <div onclick="submitq(7,'d','a')">d. <img src="https://hi-static.z-dn.net/files/d1b/4d21fdaccf18ab133049aca08c328fe4.jpg" ></div>
+        </div>
+        
+    </div>
+
+
+    <div id="q8" class="q7">
+        
+        Q8. Which Indian leader founded the Indian National Army (INA) and led the Azad Hind Fauj?
+ 
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(8,'a','c')">a. <img src="https://cdn.britannica.com/19/133919-050-3CCFBE4B/Louis-Mountbatten.jpg" ></div>
+        <div  onclick="submitq(8,'b','c')">b. Captain Lakshmi Sanghal <img style="height: 70%;" src="https://vertigoaround.files.wordpress.com/2012/08/lakshmi_sehgal_5.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(8,'c','c')">c. Captain Mohan Singh <img style="height: 69%;" src="cmsingh.png" ></div>
+        <div onclick="submitq(8,'d','c')">d. SC Bose <img src="https://cdn.britannica.com/37/171337-004-0B980E9D/Subhas-Chandra-Bose-Indian-National-Army.jpg" ></div>
+        </div>
+        
+    </div>
+
+
+    <div id="q9" class="q7">
+        
+        Q9. Which leader was awarded the "Bharat Ratna" posthumously for his contributions to the Indian independence movement?
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(9,'a','a')">a. <img src="https://i.pinimg.com/originals/e0/16/05/e01605d72a820b5fbfc53ba2648c81c6.jpg" ></div>
+        <div onclick="submitq(9,'b','a')">b. <img src="https://www.hindipanda.com/wp-content/uploads/2018/08/Sardar-Vallabhbhai-Patel-2.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(9,'c','a')">c. <img src="https://spontaneousorder.in/wp-content/uploads/2018/08/ar.jpeg" ></div>
+        <div onclick="submitq(9,'d','a')">d. <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Mahatma_Gandhi_photo.jpg" ></div>
+        </div>
+        
+    </div>
+
+
+    <div id="q10" class="q7">
+        
+        Q10. Which leader's plan for a separate state for Muslims was known as the "Pakistan Resolution"?
+
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(10,'a','d')">a. <img src="https://cdn.britannica.com/19/133919-050-3CCFBE4B/Louis-Mountbatten.jpg" ></div>
+        <div onclick="submitq(10,'b','d')">b. <img src="https://c.ndtvimg.com/2023-03/ia818iug_imran-khan-afp_625x300_19_March_23.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(10,'c','d')">c. <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Z_A_Bhutto_%28President_of_Pakistan%29.jpg/800px-Z_A_Bhutto_%28President_of_Pakistan%29.jpg" ></div>
+        <div onclick="submitq(10,'d','d')">d. <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Jinnah1945c.jpg" ></div>
+        </div>
+        
+    </div>
+
+
+    <div id="q11" class="q7">
+        
+        Q11. Which leader united the Princely States of India ?
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(11,'a','d')">a. <img src="https://cdn.dollsofindia.com/images/p/people-posters/jawaharlal-nehru-GA52_l.jpg" ></div>
+        <div onclick="submitq(11,'b','d')">b. <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Mahatma_Gandhi_photo.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(11,'c','d')">c. <img src="https://spontaneousorder.in/wp-content/uploads/2018/08/ar.jpeg" ></div>
+        <div onclick="submitq(11,'d','d')">d. <img src="https://www.hindipanda.com/wp-content/uploads/2018/08/Sardar-Vallabhbhai-Patel-2.jpg" ></div>
+        </div>
+        
+    </div>
+
+
+    <div id="q12" class="q7">
+        
+        Q12. Which monument was built to honor soldiers who sacrificed their lives in post-independence conflicts?
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(12,'a','d')">a. <img src="https://cdn.britannica.com/86/170586-050-AB7FEFAE/Taj-Mahal-Agra-India.jpg" ></div>
+        <div onclick="submitq(12,'b','d')">b. <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2019/05/Jantar-Mantar-cover-img.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(12,'c','d')">c. <img src="https://static.toiimg.com/photo/53438383.cms" ></div>
+        <div onclick="submitq(12,'d','d')">d. <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWElMjBnYXRlfGVufDB8fDB8fHww&w=1000&q=80" ></div>
+        </div>
+        
+    </div>
+
+
+    <div id="q13" class="q7">
+        
+        Q13. Which Indian leader was awarded the Nobel Prize for Literature for his work "Gitanjali" ?
+
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(13,'a','a')">a. <img src="https://cdn.britannica.com/49/134949-050-242B08C7/Rabindranath-Tagore.jpg" ></div>
+        <div onclick="submitq(13,'b','a')">b. <img src="https://i.pinimg.com/550x/59/fa/f2/59faf2c8b91414edbfe688ee04a4a535.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(13,'c','a')">c. <img src="https://spontaneousorder.in/wp-content/uploads/2018/08/ar.jpeg" ></div>
+        <div onclick="submitq(13,'d','a')">d. <img src="https://i.pinimg.com/originals/e0/16/05/e01605d72a820b5fbfc53ba2648c81c6.jpg" ></div>
+        </div>
+        
+    </div>
+
+
+    <div id="q14" class="q7">
+        
+        Q14. Who was the President of Constituent Assembly in India ?
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(14,'a','d')">a. <img src="https://cdn.dollsofindia.com/images/p/people-posters/jawaharlal-nehru-GA52_l.jpg" ></div>
+        <div onclick="submitq(14,'b','d')">b. <img src="https://i.pinimg.com/originals/e0/16/05/e01605d72a820b5fbfc53ba2648c81c6.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(14,'c','d')">c. <img src="https://track2traininginstitute.files.wordpress.com/2021/06/sarojini-naidu-9419997-1-402.jpg?w=1024" ></div>
+        <div onclick="submitq(14,'d','d')">d. <img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Rajendra_Prasad_%28Indian_President%29%2C_signed_image_for_Walter_Nash_%28NZ_Prime_Minister%29%2C_1958_%2816017609534%29.jpg" ></div>
+        </div>
+        
+    </div>
+
+
+    <div id="q15" class="q7">
+        
+        Q15.  Who was the Indian leader who coined the famous slogan "Inquilab Zindabad" ?
+
+        
+        <div style="margin-top:10px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(15,'a','d')">a. <img src="https://i.pinimg.com/1200x/71/83/70/7183704aac01413c86805c19c1586e2b.jpg" ></div>
+        <div onclick="submitq(15,'b','d')">b. <img src="https://cdn.britannica.com/92/239492-050-3819B0DB/Indian-philosopher-and-yogi-Sri-Aurobindo-Aurobindo-Ghose-Aravinda.jpg" ></div>
+    </div>
+        <div style="margin-top:-100px;display:flex;justify-content: space-around;height: 52%;">
+            <div onclick="submitq(15,'c','d')">c. <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Subhas_Chandra_Bose_NRB.jpg/800px-Subhas_Chandra_Bose_NRB.jpg" ></div>
+        <div onclick="submitq(15,'d','d')">d. <img src="https://i.pinimg.com/736x/b9/ef/1b/b9ef1b5502fa92533037a3b67b4fc4e1--bhagat-singh-india.jpg" ></div>
+        </div>
+        
+    </div>
+
+
+        
+    </div>
+</section>
+</center>
+<br><br>
+<script src="hyper.js"></script>
+</body>
+</html>
